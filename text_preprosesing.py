@@ -2,12 +2,13 @@ import re
 import nltk
 from nltk.corpus import stopwords # какво е това
 from nltk import pos_tag
+from nltk.stem import WordNetLemmatizer
 #nltk.download('averaged_perceptron_tagger')
-
-
 from nltk.corpus import wordnet
+from nltk.stem import PorterStemmer
 
-test = "This project is amazing and very interesting, but it is also hard to write!"
+test = "This projects are amazing and very interesting, but it is also hard to write and doing it has been really tiring and I was very sleepy, amazingly!"
+
 def clean(text):
     text = re.sub('[^A-Za-z]+', ' ', text)
     text = text.lower()
@@ -21,8 +22,16 @@ def trim(text):
             work_text.remove(word)
     return work_text
 
-#pos_dict = {'J':wordnet.ADJ, 'V':wordnet.VERB, 'N':wordnet.NOUN, 'R':wordnet.ADV}     
-#print(trim(clean(test)))
+
+#pos_dict = {'a':wordnet.ADJ, 'v':wordnet.VERB, 'n':wordnet.NOUN, 'r':wordnet.ADV}
+#def lemmatization_tagger(text):
+#    new_text = []
+#    tagged_text = pos_tag(text)
+#    for word, tag in tagged_text:
+#        new_text.append(tuple([word, pos_dict.get(tag[0])]))
+#    return new_text
+
+
 def text_tagger(text):
     new_text = []
     tagged_text = pos_tag(text)
@@ -40,14 +49,25 @@ def part_speech_clear(text):
             text.remove(tupple)
     return text
 
+ps = PorterStemmer()
+def text_stem(text):
+    new_text = []
+    for tuple in text:
+        new_text.append((ps.stem(tuple[0]), tuple[1] ))
+    return new_text
+
 def ready_to_tokenize(text):
     text = clean(text)
     text = trim(text)
     text = text_tagger(text)
     text = part_speech_clear(text)
+    text = text_stem(text)
     return text
 
-#print(ready_to_tokenize(test))
+print(ready_to_tokenize(test))
+
+
+#print(text_lemmatization(ready_to_tokenize(test)))
 
 def tokenizer(text):
     new_text=[]
@@ -60,4 +80,4 @@ def tokenizer(text):
 
 
 
-print(tokenizer(ready_to_tokenize(test)))
+#print(tokenizer(ready_to_tokenize(test)))
