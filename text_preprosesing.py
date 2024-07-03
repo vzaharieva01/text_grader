@@ -7,6 +7,7 @@ from nltk.stem import WordNetLemmatizer
 from nltk.corpus import wordnet
 from nltk.stem import PorterStemmer
 
+
 test = "This projects are amazing and very interesting, but it is also hard to write and doing it has been really tiring and I was very sleepy, amazingly!"
 
 def clean(text):
@@ -30,6 +31,16 @@ def trim(text):
 #    for word, tag in tagged_text:
 #        new_text.append(tuple([word, pos_dict.get(tag[0])]))
 #    return new_text
+#wnl = WordNetLemmatizer()
+#def text_lema(text):
+#    new_text = []
+#    for tuple in text:
+#        if tuple[1] in pos_dict:
+#            new_word = wnl.lemmatize(tuple[0], tuple[1])
+#        if tuple[1] not in pos_dict:
+#            new_word - wnl.lemmatize(tuple[0])
+#        new_text.append(new_word)
+#    return new_text
 
 
 def text_tagger(text):
@@ -39,8 +50,7 @@ def text_tagger(text):
         new_text.append(tuple([word, tag]))
     return new_text
 
-#print(text_tagger(trim(clean(test))))
-#print(pos_tag(trim(clean(test))))
+
 
 part_speech_list = ['CC', 'EX', 'FW' 'IN', 'JJ', 'JJS', 'JJR', 'MD', 'NN', 'NNS', 'NNP','NNPS', 'PPS','PDP','POS','PRP','RB', 'RBR', 'RBS','VB', 'VBD', 'VBG','VBN','VBP', 'VBZ']
 def part_speech_clear(text):
@@ -67,7 +77,6 @@ def ready_to_tokenize(text):
 print(ready_to_tokenize(test))
 
 
-#print(text_lemmatization(ready_to_tokenize(test)))
 
 def tokenizer(text):
     new_text=[]
