@@ -124,7 +124,7 @@ not - със следващото, DT, PDT
     върб + адж - наун + адж Movie sounds boring
     върб + адв - наун + адв, наун + върб, Flower smeels bad. Beautiful face, plays terribly.
     --върб + нещо друго = ноун + верб
-    адв - Не ни трябва нито едното. A movie beautifully done. 
+    адв - samo. A movie beautifully done. 
 2. настоящ = адж:
     ноун - и двете
     върб - The movie is very nice, watching it was fun. Нито едното. 

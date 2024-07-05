@@ -9,7 +9,7 @@ from nltk.stem import PorterStemmer
 
 test = """Something inetersting. This movie sounds amazing.The flower smells bad
 This is hard. Dress looks nice. Go to the store. Give up. Beacuse you want to. It was quite good. Very nice. 
-This movie sucks. Movie sounds boring. nice movie. It went away silently. he does it with style!"""
+This movie sucks. Movie sounds boring. nice movie. It went away silently. He does it with style!"""
 
 def clean(text):
     text = re.sub('[^A-Za-z]+', ' ', text)

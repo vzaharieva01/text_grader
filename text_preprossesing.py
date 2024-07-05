@@ -28,47 +28,31 @@ def text_tagger(text):
     for word, tag in tagged_text:
         new_text.append(tuple([word, tag]))
     return new_text
-#def tagger(text):
-#    new_text = []
-#    tagged_text = pos_tag(text)
-#    for word, tag in tagged_text:
-#        new_text.append(tuple([word, pos_dict.get(tag[0])]))
-#    return new_text
-part_speech_dict = {'DT': 'DT', 'ADJ':['JJ', 'JJS', 'JJR'], 'NOUN':['NN', 'NNS', 'NNP','NNPS'],'PDT':'PDT','ADV':['RB', 'RBR', 'RBS'],'VERB':['VB', 'VBD', 'VBG','VBN','VBP', 'VBZ']}
+
+
+part_speech_dict = {'JJ':'a', 'JJS':'a', 'JJR':'a', 'NN':'n', 'NNS':'n', 'NNP':'n','NNPS':'n','RB':'r', 'RBR':'r', 'RBS':'r','VB':'v', 'VBD':'v', 'VBG':'v','VBN':'v','VBP':'v', 'VBZ':'v'}
+pos_dict = {'J':wordnet.ADJ, 'V':wordnet.VERB, 'N':wordnet.NOUN, 'R':wordnet.ADV}
 wnl = WordNetLemmatizer()
 def text_lema(text):
     new_text = []
     for tuple in text:
-        if tuple[1] in pos_dict:
-            new_word = wnl.lemmatize(tuple[0], tuple[1])
-        if tuple[1] not in pos_dict:
+        if tuple[1] in part_speech_dict.keys():
+            new_word = wnl.lemmatize(tuple[0], part_speech_dict[tuple[1]])
+        if tuple[1] not in part_speech_dict.keys():
             new_word = wnl.lemmatize(tuple[0])
         new_text.append((new_word, tuple[1]))
     return new_text
 
 print(text_tagger(trim(clean(test))))
-#def lemmatization(text):
-#    return text_lema(tagger(trim(clean(text))))
+def lemmatization(text):
+    return text_lema(text_tagger(trim(clean(text))))
 
-#print(lemmatization(test))
+print(lemmatization(test))
 
-
-#def text_tagger(text):
-#    new_text = []
-#    tagged_text = pos_tag(text)
-#    for word, tag in tagged_text:
-#        new_text.append(tuple([word, tag]))
-#    return new_text
 
 
 
 #part_speech_list = ['DT', 'JJ', 'JJS', 'JJR', 'NN', 'NNS', 'NNP','NNPS','PDT','RB', 'RBR', 'RBS','VB', 'VBD', 'VBG','VBN','VBP', 'VBZ']
-#def part_speech_clear(text):
-#    for tupple in text:
-#        if tupple[1] not in part_speech_list:
-#            text.remove(tupple)
-#    return text
 
-#def tagget(text):
-#    return part_speech_clear(text_tagger(ready_to_tag(text)))
+
 
