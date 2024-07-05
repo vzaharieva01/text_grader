@@ -7,16 +7,16 @@ from nltk.stem import WordNetLemmatizer
 from nltk.corpus import wordnet
 from nltk.stem import WordNetLemmatizer
 
-test = "Beautifully done. Movie sounds amazing."
+test = "Beautifully done. Movie sounds amazing. It was neither good not interesting. Not good. It was nice watching it. This is very nice.Beautifully written, but poorly done"
 
 def clean(text):
     text = re.sub('[^A-Za-z]+', ' ', text)
     text.lower()
     return text
-
+#mahni poqsnitelnite
 def trim(text):
     work_text = re.split(' ', text)
-    work_text.pop()#проблем с остването на '' при clean
+    #work_text.pop()#проблем с остването на '' при clean
     for word in work_text:
         if (word in set(stopwords.words('english'))) and (word != 'not'): #kakwo e set
             work_text.remove(word)
@@ -43,7 +43,7 @@ def text_lema(text):
         new_text.append((new_word, tuple[1]))
     return new_text
 
-print(text_tagger(trim(clean(test))))
+
 def lemmatization(text):
     return text_lema(text_tagger(trim(clean(text))))
 
