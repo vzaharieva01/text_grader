@@ -1,0 +1,146 @@
+After a daring robbery of heroin from the police department stores, 
+the two detectives #try to #find some clue about the gang. 
+The chance #appears with the hooker Julie Mott (Téa Leoni), 
+the witness of the murder of a 'working girl' friend of her. 
+
+The movie is boring.
+Here the concept (boring-movie) is extracted.
+
+The flower smells bad.
+Here the concept (bad-flower) is extracted
+
+This meal smells bad.
+In this example the concept (smell,bad) is extracted.
+
+I do not like the movie.
+Based on the rule described above the concept (not, like) is extracted.
+
+Paul likes to praise good movies.
+So, in this example the concept (like,praise,movie) is extracted.
+
+in (7) the concept bad, loser is extracted.
+(7) a. Paul is a bad loser.
+
+Bob hit Marie with a hammer.
+Therefore the system extracts the complex concept (hit, with, hammer)
+
+in (9), the complex concept (play,slow) is extracted.
+(9) The machine slows down when the best games are playing.
+
+n (10), the complex concept (birthday,party) is extracted.
+(10) Erik threw a birthday party for his girlfriend.
+
+Single Word Concepts Words having part-of-speech VERB, NOUN, ADJECTIVE
+and ADVERB are also extracted from the text. Single word concepts which exist in the
+multi-word-concepts are discarded as they carry redundant information. For example,
+concept party that already appears in the concept birthday party so, we discard the
+concept party.
+
+CC coordinating conjunction 
+--CD cardinal digit 
+DT determiner   neither was good e razlichno ot good или пък neighter good nor bad
+--EX existential there (like: “there is” … think of it like “there exists”) 
+--FW foreign word 
+--IN preposition/subordinating conjunction 
+
+ADJECTIVE:
+JJ adjective – ‘big’ 
+JJR adjective, comparative – ‘bigger’ 
+JJS adjective, superlative – ‘biggest’ 
+--LS list marker 1 
+--MD modal – could, will 
+
+NOUN:
+NN noun, singular ‘- desk’ 
+NNS noun plural – ‘desks’ 
+NNP proper noun, singular – ‘Harrison’ 
+NNPS proper noun, plural – ‘Americans’ 
+PRP personal pronoun –  I, he, she - "She is beautiful", "Movie was beautiful" praising the actress
+
+
+--PRONOUN:
+PDT predeterminer – ‘all the kids’ 'quite nice' 'rather sorry'
+--POS possessive ending parent’s 
+
+--PRP$ possessive pronoun – my, his, hers 
+--WP wh-pronoun – who, what 
+--WP$ possessive wh-pronoun, eg- whose 
+--WDT wh-determiner – which 
+
+ADVERB:
+RB adverb – very, silently, 
+RBR adverb, comparative – better 
+RBS adverb, superlative – best 
+--RP particle – give up 
+--TO – to go ‘to’ the store. 
+--UH interjection – errrrrrrrm 
+
+VERB:
+VB verb, base form – take 
+VBD verb, past tense – took 
+VBG verb, gerund/present participle – taking 
+VBN verb, past participle – taken 
+VBP verb, sing. present, non-3d – take 
+VBZ verb, 3rd person sing. present – takes 
+
+
+
+--WRB wh-adverb, eg- where, when
+
+part_speech_list = ['CC', 'EX', 'FW' 'IN', 'JJ', 'JJS', 'JJR', 'MD', 'NN', 'NNS', 'NNP','NNPS', 
+'PPS','PDP','POS','RB', 'RBR', 'RBS','VB', 'VBD', 'VBG','VBN','VBP', 'VBZ']
+
+
+1. ADJ + NOUN : The adj+noun combination and noun as a stand-alone concept are
+added to the objects list.
+---2. ADJ + STOPWORD : The entire bigram is discarded. 
+3. NOUN + ADJ : As trailing adjectives do not tend to carry sufficient information,
+the adjective is discarded and only the noun is added as a valid concept. Something inetersting 
+4. NOUN + NOUN : When two nouns occur in sequence, they are considered to be
+part of a single concept. Examples include butter scotch, ice cream, cream biscuit,
+and so on.
+---5. NOUN + STOPWORD : The stopword is discarded, and only the noun is consid-
+ered valid.
+--6. STOPWORD + ADJ: The entire bigram is discarded. A beautiful story 
+--7. STOPWORD + NOUN : In bigrams matching this pattern, the stopword is dis-
+carded and the noun alone qualifies as a valid concept.
+
+a, an, and, are
+as, at, be, but, by, for, if, in, into, is, it, no, not, of, on, or, such, 
+that, the, their, then, there, these, they, this, to, was, will, with
+
+
+План:
+1.Изчистваме пунтктуация(без точка?) и стоп думи, без not !!дефолтни стоности са важни
+2.Пос тагване(без точките) и още едно изчистване
+3.Стеминг(без точките) Дали лематизацията е по-добра 
+=Да се разбие първо на изречения? По-лесно ще се отделят смислово.
+
+=Във всяко изречение да се съставят биграми? - Смислови правила:
+not - със следващото, DT, PDT
+1.настоящ = ноун:
+    ноун - двете заедно
+    адж - само Something beautiful. A world beautiful and serene. - поезия
+    върб + адж - наун + адж Movie sounds boring
+    върб + адв - наун + адв, наун + върб, Flower smeels bad. Beautiful face, plays terribly.
+    --върб + нещо друго = ноун + верб
+    адв - Не ни трябва нито едното. A movie beautifully done. 
+2. настоящ = адж:
+    ноун - и двете
+    върб - The movie is very nice, watching it was fun. Нито едното. 
+    адв - нито едното Very nice and beautufully done.
+    само - взимаме го Nice!
+    адж* + наун = и трите* 
+3. настоящ = адв:
+    върб - и двете
+    ноун – You play beautifully, Meghan., nikoe
+    адв* + върб = всичките
+    адж = Plays nicely, beatiful face. 
+4.настоящ = върб:
+    адв - и двете Done beautifully. Fun to watch and beautifully done.??
+    върб - Likes to praise good movies.
+    ноун - и двете, The plot was killed by the director. Ако не - Търсим следвая наун. 
+    адж - Sounds nice. И двете.
+
+
+
