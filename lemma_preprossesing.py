@@ -2,10 +2,11 @@ import re
 import nltk
 from nltk.corpus import stopwords # какво е това
 from nltk import pos_tag
-from nltk.stem import WordNetLemmatizer
 #nltk.download('averaged_perceptron_tagger')
 from nltk.corpus import wordnet
 from nltk.stem import WordNetLemmatizer
+
+
 
 #test = "This movie sounds amazing and I reccomend watching it, it is very fun."
 
@@ -14,13 +15,15 @@ def clean(text):
     text.lower()
     return text
 #mahni poqsnitelnite
-def trim(text):
+def trim(text): #accepts sentence and returns list
     work_text = re.split(' ', text)
-    #work_text.pop()#проблем с остването на '' при clean
+    work_text.pop()
+    new_text = []
     for word in work_text:
-        if (word in set(stopwords.words('english'))) and (word != 'not'): #kakwo e set
-            work_text.remove(word)
-    return work_text
+        if (word not in set(stopwords.words('english'))) or (word == 'not'): #kakwo e set
+            new_text.append(word)
+    return new_text
+
 
 def text_tagger(text):
     new_text = []
@@ -51,9 +54,11 @@ def without_lema(text):
     return text_tagger(trim(clean(text)))
 
 
-print(lemmatization("Theater was sold"))
+print(lemmatization("Theater a movie was sold to us"))
 
-#part_speech_list = ['DT', 'JJ', 'JJS', 'JJR', 'NN', 'NNS', 'NNP','NNPS','PDT','RB', 'RBR', 'RBS','VB', 'VBD', 'VBG','VBN','VBP', 'VBZ']
+
+
+
 
 
 
