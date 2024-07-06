@@ -7,7 +7,7 @@ from nltk.stem import WordNetLemmatizer
 from nltk.corpus import wordnet
 from nltk.stem import WordNetLemmatizer
 
-test = "Beautifully done. Movie sounds amazing. It was neither good not interesting. Not good. It was nice watching it. This is very nice.Beautifully written, but poorly done"
+#test = "This movie sounds amazing and I reccomend watching it, it is very fun."
 
 def clean(text):
     text = re.sub('[^A-Za-z]+', ' ', text)
@@ -47,10 +47,11 @@ def text_lema(text):
 def lemmatization(text):
     return text_lema(text_tagger(trim(clean(text))))
 
-print(lemmatization(test))
+def without_lema(text):
+    return text_tagger(trim(clean(text)))
 
 
-
+print(lemmatization("Theater was sold"))
 
 #part_speech_list = ['DT', 'JJ', 'JJS', 'JJR', 'NN', 'NNS', 'NNP','NNPS','PDT','RB', 'RBR', 'RBS','VB', 'VBD', 'VBG','VBN','VBP', 'VBZ']
 
