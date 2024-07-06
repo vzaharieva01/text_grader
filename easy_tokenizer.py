@@ -18,7 +18,7 @@ def clean(text): # accepts text
 
 def trim(text): #accepts text and returns list
     work_text = re.split(' ', text)
-    work_text.pop()
+    #work_text.pop()
     new_text = []
     for word in work_text:
         if (word not in set(stopwords.words('english'))) or (word == 'not'): #kakwo e set
@@ -28,21 +28,24 @@ def trim(text): #accepts text and returns list
 
 part_speech_dict = {'JJ':'a', 'JJS':'a', 'JJR':'a', 'NN':'n', 'NNS':'n', 'NNP':'n','NNPS':'n','RB':'r', 'RBR':'r', 'RBS':'r','VB':'v', 'VBD':'v', 'VBG':'v','VBN':'v','VBP':'v', 'VBZ':'v'}
 pos_dict = {'J':wordnet.ADJ, 'V':wordnet.VERB, 'N':wordnet.NOUN, 'R':wordnet.ADV}
-wnl = WordNetLemmatizer() #accepts list of tagget tuples and returns them lemmatized
+wnl = WordNetLemmatizer() #accepts list of words and returns them lemmatized
 def text_lema(text):
     new_text = []
+    text = pos_tag(text)
     for word in text:
-        if pos_tag(word) in part_speech_dict.keys():
-            new_word = wnl.lemmatize(word, pos_tag(word))
-        if pos_tag(word) not in part_speech_dict.keys():
+        part_of_speech = word[1]
+        single_word = word[0]
+        if part_of_speech in part_speech_dict.keys():
+            new_word = wnl.lemmatize(single_word, part_speech_dict[part_of_speech])
+            new_text.append(new_word)
+        if part_of_speech not in part_speech_dict.keys():
             pass
-        new_text.append(new_word)
     return new_text
 
 def single_tokenize(text):
     return text_lema(trim(clean(text)))
 
-def create_new_files(folder_path):
+def create_new_files(folder_path, new_path):
     for filename in os.listdir(folder_path):
          if filename.endswith(".txt"):
             file_path = os.path.join(folder_path, filename)
@@ -50,7 +53,7 @@ def create_new_files(folder_path):
                 content = file.read()
                 new_content = single_tokenize(content)
                 new_filename = "tokenized_" + filename
-                new_file_path = os.path.join(folder_path, new_filename)
+                new_file_path = os.path.join(new_path,new_filename)
                 with open(new_file_path, 'w', encoding='utf-8') as new_file:
-                    new_file.write(content)
-create_new_files('home/acllmdb/test/neg')
+                    new_file.write(str(new_content))
+create_new_files('./aclImdb/test/neg', './test_neg')

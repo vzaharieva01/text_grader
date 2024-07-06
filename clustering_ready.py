@@ -1,7 +1,7 @@
 import re
 from lemma_preprossesing import lemmatization, without_lema
 from rule_based_tokenizer import tokenizer
-
+from nltk.corpus import stopwords
 #test = "This movie is interesting and fun to watch, but the actors play poorly. I liked it and i would reccomend it, the setting was beautiful. STill it was poorly written."
 new = " Kutcher played the character of Jake Fischer very well, and Kevin Costner played Ben Randall with such professionalism."
 new1 = "The sign of a good movie is that it can toy with our emotions. This one did exactly that."
@@ -25,8 +25,5 @@ def ready(text):
             ready_text.append(new_sentence[i])
     return ready_text
 #print(ready(break_sentences(new)))
-print(tokenizer(without_lema(new),0, len(without_lema(new))-1))
-print(tokenizer(without_lema(new1),0, len(without_lema(new1))-1))
-print(tokenizer(without_lema(new2),0, len(without_lema(new2))-1))
-print(tokenizer(without_lema(new3),0, len(without_lema(new3))-1))
-print(tokenizer(without_lema(new4),0, len(without_lema(new4))-1))
+
+print(stopwords.words('english'))

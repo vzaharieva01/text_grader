@@ -7,16 +7,14 @@ from nltk.stem import WordNetLemmatizer
 from nltk.corpus import wordnet
 from nltk.stem import WordNetLemmatizer
 
-#test = "This movie sounds amazing and I reccomend watching it, it is very fun."
 
 def clean(text):
     text = re.sub('[^A-Za-z]+', ' ', text)
     text.lower()
     return text
-#mahni poqsnitelnite
+
 def trim(text):
     work_text = re.split(' ', text)
-    #work_text.pop()#проблем с остването на '' при clean
     for word in work_text:
         if (word in set(stopwords.words('english'))) and (word != 'not'): #kakwo e set
             work_text.remove(word)
@@ -56,6 +54,11 @@ print(lemmatization("Theater was sold"))
 tokenized_text = []
 negation_list = ['not', 'never', 'neither', 'barely', 'hardly', ' scarcely', 'no']
 #def negation_parser(tagget_text)
+
+#def adjective_parser(text):
+   # for tuple in text:
+
+
 def find_closest_noun(tagget_text, current):
     if current < len(tagget_text)-1:
         if tagget_text[current+1][1] in ['NN', 'NNS', 'NNP','NNPS', 'PRP']:
