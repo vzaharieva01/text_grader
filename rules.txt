@@ -3,16 +3,16 @@ the two detectives #try to #find some clue about the gang.
 The chance #appears with the hooker Julie Mott (Téa Leoni), 
 the witness of the murder of a 'working girl' friend of her. 
 
-The movie is boring.
+The movie is boring.da
 Here the concept (boring-movie) is extracted.
 
-The flower smells bad.
+The flower smells bad. da
 Here the concept (bad-flower) is extracted
 
-This meal smells bad.
+This meal smells bad. da 
 In this example the concept (smell,bad) is extracted.
 
-I do not like the movie.
+I do not like the movie. 
 Based on the rule described above the concept (not, like) is extracted.
 
 Paul likes to praise good movies.
@@ -87,7 +87,7 @@ VBZ verb, 3rd person sing. present – takes
 
 --WRB wh-adverb, eg- where, when
 
-part_speech_list = ['CC', 'EX', 'FW' 'IN', 'JJ', 'JJS', 'JJR', 'MD', 'NN', 'NNS', 'NNP','NNPS', 
+part_speech_list = ['CC', 'EX', 'FW' 'IN', 'JJ', 'JJS', 'JJR', 'MD', 'NN', 'NNS', 'NNP','NNPS', 'JJ', 'JJS', 'JJR'
 'PPS','PDP','POS','RB', 'RBR', 'RBS','VB', 'VBD', 'VBG','VBN','VBP', 'VBZ']
 
 
@@ -119,28 +119,36 @@ that, the, their, then, there, these, they, this, to, was, will, with
 =Във всяко изречение да се съставят биграми? - Смислови правила:
 not - със следващото, DT, PDT
 1.настоящ = ноун:
-    ноун - двете заедно
-    адж - само Something beautiful. A world beautiful and serene. - поезия
-    върб + адж - наун + адж Movie sounds boring
+    ноун - двете заедно da
+    адж - само Something beautiful. A world beautiful and serene. - поезия da
+    върб + адж - наун + адж Movie sounds boring 
     върб + адв - наун + адв, наун + върб, Flower smeels bad. Beautiful face, plays terribly.
-    --върб + нещо друго = ноун + верб
-    адв - samo. A movie beautifully done. 
+    --върб + нещо друго = ноун + верб Movie rocks!
+    адв - samo. A movie beautifully done. da
 2. настоящ = адж:
-    ноун - и двете
-    върб - The movie is very nice, watching it was fun. Нито едното. 
-    адв - нито едното Very nice and beautufully done.
-    само - взимаме го Nice!
-    адж* + наун = и трите* 
+    ноун - и двете da
+    върб - The movie is very nice, watching it was fun. Нито едното. It was nice watching it. da, riskovo
+    адв - samo Very nice and beautufully done. da A nice, beautifully done movie.
+    само - взимаме го Nice! ??
+    адж* + наун = и трите* лоша идея, реда има значение! да
 3. настоящ = адв:
-    върб - и двете
-    ноун – You play beautifully, Meghan., nikoe
+    върб - и двете da
+    ноун – You play beautifully, Meghan., nikoe da
     адв* + върб = всичките
     адж = Plays nicely, beatiful face. 
 4.настоящ = върб:
-    адв - и двете Done beautifully. Fun to watch and beautifully done.??
-    върб - Likes to praise good movies.
+    адв - и двете Done beautifully. Fun to watch and beautifully done.?? da Written beautifully, done poorly.?? da Beautifully written, but poorly done. 
+    върб - Likes to praise good movies. da
     ноун - и двете, The plot was killed by the director. Ако не - Търсим следвая наун. 
-    адж - Sounds nice. И двете.
+    адж - Sounds nice. И двете. da
 
 
 
+!! Да отбележа запетайките някак си??
+може да е изброяване но може и да е просто изречение.
+
+'''This is Michael Bay's big screen directorial debut. He already has much of his bombastic style. 
+The best thing in the movie has to be the brash comedy duo. The movie sizzles every time they are together. 
+The biggest problem is the switched identity gimmick. It's stupid and the movie struggles under the premise. 
+There is some comedy derived from it but somebody needs to come up with a better excuse for the switcharoo. 
+This is loud. This is cool. This has a great duo. But it's also overblown.'''

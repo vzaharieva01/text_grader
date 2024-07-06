@@ -49,7 +49,7 @@ def without_lema(text):
     return text_tagger(trim(clean(text)))
 
 
-print(lemmatization("Theater was sold"))
+
 
 tokenized_text = []
 negation_list = ['not', 'never', 'neither', 'barely', 'hardly', ' scarcely', 'no']
@@ -153,10 +153,6 @@ def tokenizer (tagget_text, current, end):
     return tokenizer(tagget_text, current+1, end)
 
 
-print(lemmatization("Movie sounds boring"))
-print(lemmatization("He plays terribly"))
-print(lemmatization("Ne plays terribly"))
-print(lemmatization("Flower smells bad"))
-print(lemmatization("Flower smells bad"))
-print(lemmatization("Meghan plays amazing"))
-print(lemmatization("movie is terrifying"))
+test = "Kutcher played the character of Jake Fischer very well and Kevin Costner played Ben Randall with such professionalism. The sign of a good movie is that it can toy with our emotions. This one did exactly that. The movie is beautiful. The entire theater (which was sold out) was overcome by laughter during the first half of the movie, and were moved to tears during the second half."
+
+print(tokenizer(lemmatization(test), 0, len(lemmatization(test)) - 1))
